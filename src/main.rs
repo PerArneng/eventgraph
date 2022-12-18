@@ -1,31 +1,22 @@
 mod csv;
+mod args;
 
-use clap::Parser;
+
 use std::path::Path;
 use std::process;
+use std::process::exit;
 use log::{debug, error, warn, log_enabled, info, Level};
-
-
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct Args {
-
-    /// The event file to parse
-    #[arg(short, long)]
-    file: String,
-
-    /// The event file to parse
-    #[arg(short, long)]
-    output: String
-
-}
 
 fn main() -> std::io::Result<()> {
 
     env_logger::init();
     info!("eventgraph is starting up");
 
-    let args = Args::parse();
+    let args = args::parse().unwrap_or_else(|e| {
+        eprintln!("{}", e);
+        exit(1);
+    });
+
     let path = Path::new(&args.file);
     if !path.exists() {
         error!("non existing file: '{}'", path.display());
