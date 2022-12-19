@@ -17,7 +17,7 @@ fn main() -> std::io::Result<()> {
 
     logging::setup();
 
-    info!("eventgraph is starting up");
+    info!("Event Graph is starting up");
 
     let args = args::parse().unwrap_or_else(|e| {
         eprintln!("{}", e);
