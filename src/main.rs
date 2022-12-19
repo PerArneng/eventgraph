@@ -1,3 +1,5 @@
+// some temporary allow's during
+// initial development
 #![allow(unused_imports)]
 #![allow(unused_variables)]
 #![allow(unused_variables)]
