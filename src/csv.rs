@@ -1,7 +1,8 @@
+
 use std::fs::File;
 use std::path::Path;
 use std::io::{Read, Result};
-use log::{debug, error, warn, log_enabled, info, Level};
+use log::{debug, error, warn, info};
 
 pub fn parse(path: &Path) -> Result<()> {
     info!("parsing the CSV file: '{}'", path.display());

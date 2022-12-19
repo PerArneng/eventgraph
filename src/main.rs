@@ -1,15 +1,20 @@
+#![allow(unused_imports)]
+#![allow(unused_variables)]
+#![allow(unused_variables)]
+
 mod csv;
 mod args;
-
+mod logging;
 
 use std::path::Path;
 use std::process;
 use std::process::exit;
-use log::{debug, error, warn, log_enabled, info, Level};
+use log::{info, error};
 
 fn main() -> std::io::Result<()> {
 
-    env_logger::init();
+    logging::setup();
+
     info!("eventgraph is starting up");
 
     let args = args::parse().unwrap_or_else(|e| {
