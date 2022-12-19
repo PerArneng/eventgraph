@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  test_phaser:
+  test_event_graph:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +32,5 @@ jobs:
 
       - name: Test
         run: |
-          cd phaser
-          make check
+          cargo test --workspace --all-features --verbose
   
